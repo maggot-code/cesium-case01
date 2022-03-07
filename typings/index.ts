@@ -2,9 +2,13 @@
  * @Author: maggot-code
  * @Date: 2022-02-18 17:32:28
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-02-27 02:23:19
+ * @LastEditTime: 2022-03-07 17:14:53
  * @Description: file content
  */
+declare interface Window {
+    CESIUM_BASE_URL: string;
+}
+
 declare type ElementUnit = Element | HTMLElement | Document | Window;
 
 declare type Nullable<T> = T | null;

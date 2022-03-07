@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-02-24 14:58:53
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-02-25 15:25:51
+ * @LastEditTime: 2022-03-07 17:01:56
  * @Description: file content
  */
 import { useAppRouteRaw } from 'biz/router';
@@ -10,7 +10,7 @@ import { useAppRouteRaw } from 'biz/router';
 export default useAppRouteRaw("basics", [
     {
         path: "/",
-        redirect: "/ready",
+        redirect: "/cesium",
         name: "root",
         meta: {
             isAsync: false
