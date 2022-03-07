@@ -1,0 +1,79 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "sourceMap": true,
+        "jsx": "preserve",
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true,
+        "allowJs": false,
+        "strict": true,
+        "noEmitOnError": true,
+        "noUnusedLocals": true,
+        "noImplicitAny": false,
+        "experimentalDecorators": true, // 注解
+        "useDefineForClassFields": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "removeComments": true,
+        "declaration": true,
+        "declarationMap": false,
+        "suppressImplicitAnyIndexErrors": true,
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "types": [
+            "vite/client"
+        ],
+        "typeRoots": [
+            "./node_modules/@types/",
+            "./typings"
+        ],
+        "paths": {
+            "@/*": [
+                "src/*"
+            ],
+            "build/*": [
+                "build/*"
+            ],
+            "typings/*": [
+                "typings/*"
+            ],
+            "biz/*": [
+                "biz/*"
+            ],
+            "svc/*": [
+                "service/*"
+            ],
+            "mock/*": [
+                "mock/*"
+            ]
+        }
+    },
+    "include": [
+        "biz/**/*.ts",
+        "biz/**/*.d.ts",
+        "service/**/*.ts",
+        "service/**/*.d.ts",
+        "mock/**/*.ts",
+        "mock/**/*.d.ts",
+        "typings/**/*.d.ts",
+        "typings/**/*.ts",
+        "build/**/*.ts",
+        "build/**/*.d.ts",
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+        "vite.config.ts",
+        "components.d.ts",
+        "package.json",
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+    ]
+}

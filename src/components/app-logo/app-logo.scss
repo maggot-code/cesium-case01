@@ -1,0 +1,35 @@
+.app-logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: $appTopHeight;
+    transition: all 1s;
+    overflow: hidden;
+    &-img{
+        align-self: center;
+        width: calc($appTopHeight / 1.6);
+        height: calc($appTopHeight / 1.6);
+        animation: showLogo 1.5s;
+        transition: all 1s;
+        object-fit: contain;
+        overflow: hidden;
+    }
+    &-img-shrink{
+        width: calc($appTopHeight / 1.3);
+        height: calc($appTopHeight / 1.3);
+    }
+    &-title{
+        text-align: center;
+        font-size: 14px;
+        animation: showLogo 1.5s;
+    }
+}
+.app-logo-shrink{
+    justify-content: center;
+}
+
+@keyframes showLogo {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}

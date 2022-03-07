@@ -1,0 +1,83 @@
+.app-transition {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    overflow: hidden;
+    &-vessel{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 9em;
+        height: 9em;
+        transform: rotateX(45deg) rotateZ(45deg);
+        transform-style: preserve-3d;
+        &-cube {
+            flex-shrink: 0;
+            position: relative;
+            width: 3em;
+            height: 3em;
+            background-color: hsl($themeHue, 61.9%, 75.29%);
+            transform: translateZ(3em);
+            transform-style: preserve-3d;
+            transition: 0.25s;
+            animation: anim 1s infinite;
+            box-shadow: 12em 12em 0.6em rgba($color: #333, $alpha: 0.5);
+
+            &::after,
+            &::before {
+                content: "";
+                position: absolute;
+                display: block;
+                width: 3em;
+                height: 3em;
+            }
+
+            &::before {
+                background-color: hsl($themeHue, 61.9%, 85.29%);
+                transform: rotateY(90deg) translateX(3em);
+                transform-origin: 100% 0;
+            }
+            &::after {
+                background-color: hsl($themeHue, 61.9%, 65.29%);
+                transform: rotateX(-90deg) translateY(3em);
+                transform-origin: 100% 100%;
+            }
+            &:nth-child(1) {
+                animation-delay: 0.05s;
+            }
+            &:nth-child(2) {
+                animation-delay: 0.1s;
+            }
+            &:nth-child(3) {
+                animation-delay: 0.15s;
+            }
+            &:nth-child(4) {
+                animation-delay: 0.2s;
+            }
+            &:nth-child(5) {
+                animation-delay: 0.25s;
+            }
+            &:nth-child(6) {
+                animation-delay: 0.3s;
+            }
+            &:nth-child(7) {
+                animation-delay: 0.35s;
+            }
+            &:nth-child(8) {
+                animation-delay: 0.4s;
+            }
+            &:nth-child(9) {
+                animation-delay: 0.45s;
+            }
+        }
+    }
+}
+
+@keyframes anim {
+    50% {
+        transform: translateZ(6em);
+    }
+}

@@ -1,0 +1,6 @@
+.app-menu{
+    width: 100%;
+    height: calc(100% - $appTopHeight);
+    overflow-x: hidden;
+    overflow-y: auto;
+}

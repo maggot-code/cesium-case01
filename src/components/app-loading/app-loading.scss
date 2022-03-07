@@ -1,0 +1,99 @@
+.app-loading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    background-color: rgba(231, 153, 176, 0.1);
+    overflow: hidden;
+    &-tile{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 6em;
+        height: 6em;
+        &-cube{
+            width: 2em;
+            height: 2em;
+            background-color: $themeColor;
+            animation: appLoadingTile 1.3s infinite ease-in-out; 
+            &:nth-child(1){
+                animation-delay: 0.2s;
+            }
+            &:nth-child(2){
+                animation-delay: 0.3s;
+            }
+            &:nth-child(3){
+                animation-delay: 0.4s;
+            }
+            &:nth-child(4){
+                animation-delay: 0.1s;
+            }
+            &:nth-child(5){
+                animation-delay: 0.2s;
+            }
+            &:nth-child(6){
+                animation-delay: 0.3s;
+            }
+            &:nth-child(7){
+                animation-delay: 0s;
+            }
+            &:nth-child(8){
+                animation-delay: 0.1s;
+            }
+            &:nth-child(9){
+                animation-delay: 0.2s;
+            }
+        }
+    }
+    &-hourglass{
+        position: relative;
+        width: 3em;
+        height: 3em;
+        border: 3px solid $themeColor;
+        box-sizing: border-box;
+        background-color: transparent;
+        overflow: hidden;
+        animation: spinHourglass 3s ease infinite;
+        &::before{
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            width: 3em;
+            height: 3em;
+            background-color: $themeColor;
+            transform-origin: center bottom;
+            transform: scaleY(1);
+            animation: fillHourglass 3s linear infinite;
+        }
+    }
+}
+  
+@keyframes appLoadingTile {
+    0%, 70%, 100%{
+        transform: scale3D(1, 1, 1);
+    }
+    35% {
+        transform: scale3D(0, 0, 1);
+    }
+}
+
+@keyframes spinHourglass {
+    50%,
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fillHourglass {
+    25%,
+    50% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform: scaleY(1);
+    }
+}
