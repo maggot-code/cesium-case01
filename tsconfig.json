@@ -55,6 +55,7 @@
     },
     "include": [
         "biz/**/*.ts",
+        "biz/**/*.tsx",
         "biz/**/*.d.ts",
         "service/**/*.ts",
         "service/**/*.d.ts",
