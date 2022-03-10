@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-03-09 14:03:54
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-10 09:20:43
+ * @LastEditTime: 2022-03-10 18:02:42
  * @Description: 地图
  */
 import type { WatchStopHandle } from 'vue';
@@ -12,6 +12,7 @@ import { ATFCesiumWork } from 'biz/cesium/domain/work';
 import { ATFCesiumConst } from 'biz/cesium/domain/const';
 import { ATFCesiumState } from 'biz/cesium/domain/state';
 import { ATFCesiumView } from 'biz/cesium/domain/view';
+import { ATFCesiumBaseLayer } from 'biz/cesium/domain/baseLayer';
 import { ATFCesiumLayer } from 'biz/cesium/domain/layer';
 import { ATFCesiumModel } from 'biz/cesium/domain/model';
 
@@ -23,6 +24,7 @@ export class ATFCesiumMap extends ATFCesiumCore {
     protected mapConst: ATFCesiumConst;
     protected mapState: ATFCesiumState;
     protected mapView: ATFCesiumView;
+    protected mapBaseLayer: ATFCesiumBaseLayer;
     protected mapLayer: ATFCesiumLayer;
     protected mapModel: ATFCesiumModel;
 
@@ -32,6 +34,7 @@ export class ATFCesiumMap extends ATFCesiumCore {
         this.mapConst = new ATFCesiumConst();
         this.mapState = new ATFCesiumState();
         this.mapView = new ATFCesiumView();
+        this.mapBaseLayer = new ATFCesiumBaseLayer();
         this.mapLayer = new ATFCesiumLayer();
         this.mapModel = new ATFCesiumModel();
 
@@ -50,12 +53,26 @@ export class ATFCesiumMap extends ATFCesiumCore {
     get viewer() {
         return this.mapView.viewer;
     }
+    get const() {
+        return this.mapConst;
+    }
+    get baseLayer() {
+        return this.mapBaseLayer;
+    }
 
     onMount() {
         if (!this.mapState.isReady) return;
 
-        console.log('atf cesium install');
         this.mapView.setupViewer(this);
+
+        this.mapView.flyTo()
+            .then(() => {
+                console.log(11);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
         this.mapState.isMount = true;
     }
     onDestroy() {
