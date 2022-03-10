@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-03-09 14:03:54
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-09 18:10:51
+ * @LastEditTime: 2022-03-10 09:20:43
  * @Description: 地图
  */
 import type { WatchStopHandle } from 'vue';
@@ -51,25 +51,17 @@ export class ATFCesiumMap extends ATFCesiumCore {
         return this.mapView.viewer;
     }
 
-    addLayer() {
-        if (this.mapState.isMount) return this.mapLayer.addLayer();
-
-        this.mapWork.setFirstQueue(this.mapLayer.addLayer);
-    }
-
     onMount() {
         if (!this.mapState.isReady) return;
 
         console.log('atf cesium install');
         this.mapView.setupViewer(this);
-        this.mapWork.runFirstQueue();
         this.mapState.isMount = true;
     }
     onDestroy() {
         if (!this.mapState.isMount) return;
 
         console.log('atf cesium uninstall');
-        this.mapWork.revokeWork();
         this.mapView.revokeViewer();
         this.cesiumEffect();
         this.mapState.isDestroy = true;
