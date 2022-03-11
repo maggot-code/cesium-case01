@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-03-09 13:59:07
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-11 13:55:16
+ * @LastEditTime: 2022-03-11 17:47:19
  * @Description: 视图
  */
 import type { Ref } from 'vue';
@@ -93,7 +93,7 @@ export class ATFCesiumView extends ATFCesiumCore {
             fullscreenButton: false,                        // 不显示放大按钮
             vrButton: false,                                // 不显示VR按钮
             geocoder: false,                                // 不显示搜索控件
-            homeButton: false,                              // 不显示返回预设点按钮
+            homeButton: true,                               // 不显示返回预设点按钮
             infoBox: false,                                 // 不显示信息弹框
             sceneModePicker: true,                          // 显示场景切换控件
             selectionIndicator: false,                      // 不显示选择器控件
@@ -102,7 +102,7 @@ export class ATFCesiumView extends ATFCesiumCore {
             navigationInstructionsInitiallyVisible: false,  // 默认展示导航帮助内容
             scene3DOnly: false,                             // 禁止仅限3D场景渲染
             shouldAnimate: true,                            // 开启时间动画
-            shadows: true,                                  // 开启日照阴影
+            shadows: false,                                 // 开启日照阴影
             useDefaultRenderLoop: true,                     // 使用小部件控制循环渲染
             useBrowserRecommendedResolution: true,          // 忽略浏览器分辨率
             automaticallyTrackDataSourceClocks: true,       // 设置小部件自动跟踪数据源时钟更新

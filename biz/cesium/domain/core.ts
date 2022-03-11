@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-03-09 13:24:53
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-09 17:35:45
+ * @LastEditTime: 2022-03-11 14:45:52
  * @Description: 核心
  */
 import "cesium/Build/Cesium/Widgets/widgets.css";
@@ -19,5 +19,8 @@ export class ATFCesiumCore {
     }
     protected setupCesiumToken(token: string) {
         Cesium.Ion.defaultAccessToken = token;
+    }
+    protected setupCesiumCamera() {
+        Cesium.Camera.DEFAULT_VIEW_RECTANGLE = Cesium.Rectangle.fromDegrees(80, 22, 130, 55);
     }
 }

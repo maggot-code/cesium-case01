@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-03-09 13:30:11
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-10 13:55:06
+ * @LastEditTime: 2022-03-11 14:46:10
  * @Description: 常量
  */
 import { ATFCesiumCore } from 'biz/cesium/domain/core';
@@ -20,6 +20,7 @@ export class ATFCesiumConst extends ATFCesiumCore {
 
         this.setupCesiumBaseURL(this.baseURL);
         this.setupCesiumToken(this.token);
+        this.setupCesiumCamera();
     }
 
     get cesiumBaseURL() {

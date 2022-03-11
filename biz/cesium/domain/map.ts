@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-03-09 14:03:54
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-11 13:46:26
+ * @LastEditTime: 2022-03-11 16:53:07
  * @Description: 地图
  */
 import type { WatchStopHandle } from 'vue';
@@ -16,6 +16,11 @@ import { ATFCesiumBaseLayer } from 'biz/cesium/domain/baseLayer';
 import { ATFCesiumLayer } from 'biz/cesium/domain/layer';
 import { ATFCesiumModel } from 'biz/cesium/domain/model';
 
+import {
+    Cesium3DTileStyle,
+    Cesium3DTileset,
+    IonResource
+} from 'cesium';
 import { watchEffect } from 'vue';
 
 export class ATFCesiumMap extends ATFCesiumCore {
@@ -63,7 +68,14 @@ export class ATFCesiumMap extends ATFCesiumCore {
     onMount() {
         if (!this.mapState.isReady) return;
 
-        this.mapView.setupViewer(this);
+        const viewer = this.mapView.setupViewer(this);
+
+        const tileset = viewer.scene.primitives.add(
+            new Cesium3DTileset({
+                url: IonResource.fromAssetId(96188),
+            })
+        );
+        tileset.style = new Cesium3DTileStyle();
 
         this.mapView.flyTo()
             .then(() => {
