@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-03-09 13:59:07
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-10 18:01:33
+ * @LastEditTime: 2022-03-11 13:55:16
  * @Description: 视图
  */
 import type { Ref } from 'vue';
@@ -20,12 +20,10 @@ import {
     MapMode2D,
     Cartesian3,
     Math,
-    createWorldTerrain,
 
     ScreenSpaceEventHandler,
     ScreenSpaceEventType,
     Cartographic,
-    TerrainProvider
 } from 'cesium';
 import { ATFCesiumCore } from 'biz/cesium/domain/core';
 import { ATFCesiumMap } from 'biz/cesium/domain/map';
@@ -46,7 +44,7 @@ export class ATFCesiumView extends ATFCesiumCore {
         const globe = new Globe();
 
         globe.show = true;                              // 默认显示球体
-        globe.baseColor = new Color(255, 255, 255, 0.5);      // 球体表面颜色
+        globe.baseColor = new Color(255, 255, 255, 0.5);// 球体表面颜色
         globe.depthTestAgainstTerrain = true;           // 开启深度监测
         globe.showGroundAtmosphere = true;              // 在球体表面绘制大气
         globe.enableLighting = false;                   // 设置昼夜区域
@@ -135,17 +133,18 @@ export class ATFCesiumView extends ATFCesiumCore {
     }
     async flyTo() {
         // 116.39125509347024,39.90720589528059 天安门
+        const height = 600;
         return new Promise<void>((resolve, reject) => {
             this.viewer.camera.flyTo({
-                destination: Cartesian3.fromDegrees(116.39125509347024, 39.90720589528059, 600),
-                // duration: 12,
-                duration: 12,
-                maximumHeight: 3000,
-                pitchAdjustHeight: 2000,
+                destination: Cartesian3.fromDegrees(116.39125509347024, 39.90720589528059, height),
                 orientation: {
                     heading: Math.toRadians(0.0),   // 旋转
-                    pitch: Math.toRadians(-35.0),   // 角度
+                    pitch: Math.toRadians(-16.0),   // 角度
                 },
+                // duration: 12,
+                duration: 12,
+                maximumHeight: height,
+                pitchAdjustHeight: height,
                 complete: resolve,
                 cancel: reject
             });
