@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-03-09 13:59:07
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-11 17:47:19
+ * @LastEditTime: 2022-03-14 14:08:37
  * @Description: 视图
  */
 import type { Ref } from 'vue';
@@ -108,6 +108,7 @@ export class ATFCesiumView extends ATFCesiumCore {
             automaticallyTrackDataSourceClocks: true,       // 设置小部件自动跟踪数据源时钟更新
             projectionPicker: false,                        // 不显示投射切换按钮
             orderIndependentTranslucency: true,
+
             requestRenderMode: false,
         });
 
