@@ -2,12 +2,13 @@
  * @Author: maggot-code
  * @Date: 2022-02-17 17:37:23
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-06 02:05:36
+ * @LastEditTime: 2022-03-17 09:52:35
  * @Description: file content
  */
 import type { BuildOptions, ESBuildOptions } from 'vite';
 
 import { ViteEnv } from './vite-env';
+import externalGlobals from "rollup-plugin-external-globals";
 
 export function ViteBuild(mode: string): BuildOptions {
     const {
@@ -39,6 +40,12 @@ export function ViteBuild(mode: string): BuildOptions {
             }
         },
         rollupOptions: {
+            external: ["mars3d"],
+            plugins: [
+                externalGlobals({
+                    mars3d: "mars3d",
+                }),
+            ],
             output: {
                 chunkFileNames: `${VITE_ASSETS_DIR}/js/[name]-[hash].js`,
                 entryFileNames: `${VITE_ASSETS_DIR}/js/[name]-[hash].js`,

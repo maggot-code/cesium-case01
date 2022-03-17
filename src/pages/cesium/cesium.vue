@@ -2,22 +2,23 @@
  * @Author: maggot-code
  * @Date: 2022-03-07 17:02:12
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-16 23:28:53
+ * @LastEditTime: 2022-03-17 13:23:13
  * @Description: file content
 -->
 <script setup lang='ts'>
-// import { default as CesiumVessel } from 'biz/cesium/components/cesium-vessel';
-// import { default as CesiumControl } from 'biz/cesium/components/cesium-control';
-import { Map } from 'mars3d';
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
+import { useMars3d } from 'biz/mars3d/hooks/use-mars3d';
 
-const refs = ref();
+const { marsMap } = useMars3d();
+
+console.log(marsMap);
 
 onMounted(() => {
-    const config = {};
-    const map = new Map(refs.value, config);
-    console.log(map);
-})
+    marsMap.onMount("cesium-vessel");
+});
+onUnmounted(() => {
+    marsMap.onDestroy();
+});
 </script>
 
 <template>
@@ -28,7 +29,7 @@ onMounted(() => {
             <cesium-control></cesium-control>
         </template>
     </cesium-vessel>-->
-    <div class="cesium-vessel" ref="refs"></div>
+    <div class="cesium-vessel" id="cesium-vessel"></div>
 </template>
 
 <style scoped lang='scss'>

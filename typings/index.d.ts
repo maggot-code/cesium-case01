@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-02-18 17:32:28
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-16 23:28:34
+ * @LastEditTime: 2022-03-17 09:56:07
  * @Description: file content
  */
 declare interface Window {
