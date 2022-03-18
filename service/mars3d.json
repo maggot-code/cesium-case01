@@ -9,6 +9,7 @@
         },
         "globe": {
             "show": true,
+            "baseColor": "#333333",
             "depthTestAgainstTerrain": true,
             "showGroundAtmosphere": true,
             "enableLighting": false,
@@ -38,6 +39,7 @@
         "fog": true,
         "fxaa": true,
         "highDynamicRange": false,
+        "backgroundColor": "#333333",
         "sceneMode": 3,
         "scene3DOnly": false,
         "shouldAnimate": true,
@@ -136,7 +138,7 @@
             "show": true,
             "pid": 10,
             "id": 101,
-            "name": "天地图-影像图",
+            "name": "影像底图",
             "icon": "https://muyao1987.gitee.io/cdn/mars3d.cn/img/basemaps/tdt_img.png",
             "type": "group",
             "layers": [
@@ -161,7 +163,7 @@
         {
             "pid": 10,
             "id": 102,
-            "name": "天地图-电子图",
+            "name": "电子底图",
             "icon": "https://muyao1987.gitee.io/cdn/mars3d.cn/img/basemaps/tdt_vec.png",
             "type": "group",
             "layers": [
@@ -182,7 +184,42 @@
                     ]
                 }
             ]
+        },
+        {
+            "pid": 10,
+            "id": 103,
+            "name": "蓝色底图",
+            "icon": "https://muyao1987.gitee.io/cdn/mars3d.cn/img/basemaps/bd-c-midnight.png",
+            "type": "xyz",
+            "url": "http://map.geoq.cn/arcgis/rest/services/ChinaOnlineStreetPurplishBlue/MapServer/tile/{z}/{y}/{x}",
+            "chinaCRS": "GCJ02",
+            "enablePickFeatures": false
+        },
+        {
+            "pid": 10,
+            "id": 104,
+            "name": "黑色底图",
+            "icon": "https://muyao1987.gitee.io/cdn/mars3d.cn/img/basemaps/bd-c-dark.png",
+            "type": "tencent",
+            "layer": "custom",
+            "style": "4"
         }
     ],
-    "layers": []
+    "layers": [
+        {
+            "id": 20,
+            "name": "辅助图层",
+            "type": "group"
+        },
+        {
+            "pid": 20,
+            "id": 201,
+            "name": "行政区划界线",
+            "type": "xyz",
+            "url": "https://t{s}.tianditu.gov.cn/DataServer?T=ibo_w&x={x}&y={y}&l={z}&tk=ef590000990e247813bf916bdce1d941",
+            "subdomains": "01234567",
+            "maximumLevel": 10,
+            "show": true
+        }
+    ]
 }
