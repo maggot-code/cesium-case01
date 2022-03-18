@@ -3,11 +3,12 @@
     "private": true,
     "version": "0.0.0",
     "scripts": {
-        "dev": "vite --host --force",
-        "build": "vue-tsc --noEmit && vite build",
-        "staging": "vue-tsc --noEmit && vite build --mode staging",
+        "dev": "npm run clear && vite --host --force",
+        "build": "npm run clear && vue-tsc --noEmit && vite build",
+        "staging": "npm run clear && vue-tsc --noEmit && vite build --mode staging",
         "report": "cross-env REPORT=true npm run build",
-        "preview": "vite preview --host"
+        "preview": "vite preview --host",
+        "clear": "npm cache clean --force && npm cache verify"
     },
     "dependencies": {
         "axios": "^0.25.0",

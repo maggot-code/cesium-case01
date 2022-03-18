@@ -1,12 +1,5 @@
 {
     "scene": {
-        "center": {
-            "lat": 39.898725,
-            "lng": 116.391711,
-            "alt": 379,
-            "heading": 357,
-            "pitch": -15
-        },
         "globe": {
             "show": true,
             "baseColor": "#333333",
@@ -72,24 +65,10 @@
         "overviewMap": {
             "basemap": {
                 "name": "天地图",
-                "type": "group",
-                "layers": [
-                    {
-                        "name": "底图",
-                        "type": "tdt",
-                        "layer": "ter_d",
-                        "key": [
-                            "ef590000990e247813bf916bdce1d941"
-                        ]
-                    },
-                    {
-                        "name": "标注",
-                        "type": "tdt",
-                        "layer": "ter_z",
-                        "key": [
-                            "ef590000990e247813bf916bdce1d941"
-                        ]
-                    }
+                "type": "tdt",
+                "layer": "vec_d",
+                "key": [
+                    "ef590000990e247813bf916bdce1d941"
                 ]
             },
             "rectangle": {
@@ -123,7 +102,7 @@
         "showRenderLoopErrors": true
     },
     "terrain": {
-        "type": "ion",
+        "url": "http://data.mars3d.cn/terrain",
         "requestWaterMask": true,
         "requestVertexNormals": true,
         "show": true
