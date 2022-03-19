@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-03-19 17:13:23
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-19 19:53:26
+ * @LastEditTime: 2022-03-19 23:57:48
  * @Description: file content
  */
 import * as mars3d from 'mars3d';
@@ -14,7 +14,7 @@ export function useLocation(map: mars3d.Map) {
     const point = new mars3d.LngLatPoint(116.624821, 40.301448, 500);
 
     map.flyToPoint(point, {
-        duration: 8,
+        duration: 0,
         radius: 500,
         heading: 320,
         pitch: -15,
