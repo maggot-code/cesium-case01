@@ -2,17 +2,19 @@
  * @Author: maggot-code
  * @Date: 2022-03-07 17:02:12
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-18 18:01:44
+ * @LastEditTime: 2022-03-19 18:27:42
  * @Description: file content
 -->
 <script setup lang='ts'>
-import { onMounted } from 'vue';
-import { useMars3d } from 'biz/mars3d/hooks/use-mars3d';
+import { useMars3d } from '@/hooks/mars3d/use-mars3d';
+import { useLocation } from '@/hooks/mars3d/use-location';
+import { useBasicsModel } from '@/hooks/mars3d/use-basics-model';
+import { useMapEffect } from '@/hooks/mars3d/use-map-effect';
 
-onMounted(async () => {
-    const { map } = await useMars3d("cesium-vessel");
-    console.log(map);
-});
+useMars3d("cesium-vessel")
+    .then(useLocation)
+    .then(useBasicsModel)
+    .then(useMapEffect)
 </script>
 
 <template>
