@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-03-07 17:02:12
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-21 17:58:03
+ * @LastEditTime: 2022-03-21 18:04:58
  * @Description: file content
 -->
 <script setup lang='ts'>
@@ -10,7 +10,7 @@ import shuikuJSON from '@/assets/json/shuiku.json';
 import hedaoJSON from '@/assets/json/huaihe.json';
 import { useMars3d } from '@/hooks/mars3d/use-mars3d';
 import { useLocation } from '@/hooks/mars3d/use-location';
-// import { useBasicsModel } from '@/hooks/mars3d/use-basics-model';
+import { useBasicsModel } from '@/hooks/mars3d/use-basics-model';
 import { useMapEffect } from '@/hooks/mars3d/use-map-effect';
 import { useFloodDeduce } from '@/hooks/mars3d/use-flood-deduce';
 
@@ -59,7 +59,7 @@ onBeforeUnmount(() => {
 });
 useMars3d("cesium-vessel")
     .then(useLocation)
-    // .then(useBasicsModel)
+    .then(useBasicsModel)
     .then(useMapEffect)
     .then(shuiku.mount)
     .then(hedao.mount)
