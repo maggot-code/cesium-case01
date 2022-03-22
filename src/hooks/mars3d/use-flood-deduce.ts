@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-03-21 16:35:32
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-22 10:18:00
+ * @LastEditTime: 2022-03-22 16:43:44
  * @Description: file content
  */
 import type { FloodDeduceOptions } from 'typings/flood-deduce';
@@ -15,6 +15,8 @@ class FloodDeduce {
     private requestAnimationId?: number;
     private map!: mars3d.Map;
     private options: FloodDeduceOptions;
+    // 步长
+    protected step = ref(0.5);
     // 当前水位
     protected waterLevel = ref(0);
     // 最小高度
@@ -70,12 +72,12 @@ class FloodDeduce {
     }
     // 正向增长
     protected setupForward = () => {
-        this.analysis.height = this.waterLevel.value += 0.5;
+        this.analysis.height = this.waterLevel.value += this.step.value;
         this.requestAnimationId = requestAnimationFrame(this.setupForward);
     }
     // 逆向增长
     protected setupReverse = () => {
-        this.analysis.height = this.waterLevel.value -= 0.5;
+        this.analysis.height = this.waterLevel.value -= this.step.value;
         this.requestAnimationId = requestAnimationFrame(this.setupReverse);
     }
 
