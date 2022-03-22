@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-03-19 15:36:53
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-22 09:37:17
+ * @LastEditTime: 2022-03-22 18:11:45
  * @Description: file content
  */
 import * as mars3d from 'mars3d';
@@ -31,17 +31,7 @@ export function useMars3d(el: string): Promise<mars3d.Map> {
         map.addLayer(new mars3d.layer.GraphicLayer({ id: "graphic" }));
 
         map.on(mars3d.EventType.load, (context) => {
-            if (import.meta.env.DEV) {
-                resolve(context.target);
-            } else {
-                // 开场动画
-                context.target.openFlyAnimation({
-                    duration1: 3,
-                    callback: function () {
-                        resolve(context.target)
-                    }
-                })
-            }
+            resolve(context.target);
         });
     }));
 }
