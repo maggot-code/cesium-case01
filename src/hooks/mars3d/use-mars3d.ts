@@ -2,11 +2,12 @@
  * @Author: maggot-code
  * @Date: 2022-03-19 15:36:53
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-21 18:04:30
+ * @LastEditTime: 2022-03-22 09:37:17
  * @Description: file content
  */
 import * as mars3d from 'mars3d';
 import mars3dConfig from 'svc/mars3d.json';
+import { assign } from 'biz/utils/common';
 import { isValid, isVoid } from 'biz/utils/checkers';
 import { onMounted, onBeforeUnmount } from 'vue';
 
@@ -23,19 +24,24 @@ export function useMars3d(el: string): Promise<mars3d.Map> {
     return new Promise<mars3d.Map>((resolve, reject) => onMounted(() => {
         if (isValid(map)) return reject(map);
 
-        map = new mars3d.Map(el, mars3dConfig);
+        map = new mars3d.Map(el, assign(mars3dConfig, {
+            showRenderLoopErrors: import.meta.env.DEV
+        }));
 
         map.addLayer(new mars3d.layer.GraphicLayer({ id: "graphic" }));
 
         map.on(mars3d.EventType.load, (context) => {
-            // resolve(context.target);
-            // 开场动画
-            context.target.openFlyAnimation({
-                duration1: 3,
-                callback: function () {
-                    resolve(context.target)
-                }
-            })
+            if (import.meta.env.DEV) {
+                resolve(context.target);
+            } else {
+                // 开场动画
+                context.target.openFlyAnimation({
+                    duration1: 3,
+                    callback: function () {
+                        resolve(context.target)
+                    }
+                })
+            }
         });
     }));
 }

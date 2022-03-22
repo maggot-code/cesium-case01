@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-03-19 17:13:23
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-21 18:04:36
+ * @LastEditTime: 2022-03-22 09:29:36
  * @Description: file content
  */
 import * as mars3d from 'mars3d';

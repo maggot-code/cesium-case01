@@ -2,7 +2,7 @@
  * @Author: maggot-code
  * @Date: 2022-03-21 16:35:32
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-03-21 17:57:22
+ * @LastEditTime: 2022-03-22 10:18:00
  * @Description: file content
  */
 import type { FloodDeduceOptions } from 'typings/flood-deduce';
@@ -12,6 +12,7 @@ import * as mars3d from 'mars3d';
 import { ref, computed, unref } from 'vue';
 
 class FloodDeduce {
+    private requestAnimationId?: number;
     private map!: mars3d.Map;
     private options: FloodDeduceOptions;
     // 当前水位
@@ -59,15 +60,23 @@ class FloodDeduce {
     }
     protected setupAnalysis() {
         this.analysis = new mars3d.thing.FloodByGraphic({
-            id: "analysis",
             positions: this.options.position,
-            speed: 1,
             style: {
                 color: "#006ab4",
                 opacity: 0.6,
                 outline: false
             }
         });
+    }
+    // 正向增长
+    protected setupForward = () => {
+        this.analysis.height = this.waterLevel.value += 0.5;
+        this.requestAnimationId = requestAnimationFrame(this.setupForward);
+    }
+    // 逆向增长
+    protected setupReverse = () => {
+        this.analysis.height = this.waterLevel.value -= 0.5;
+        this.requestAnimationId = requestAnimationFrame(this.setupReverse);
     }
 
     get valueGather() {
@@ -93,15 +102,27 @@ class FloodDeduce {
             minHeight: this.valueGather.minHeight,
             maxHeight: this.valueGather.waterLevel
         });
-    }
-    // true 增加 false 减少
-    run(state: boolean) {
-        const height = state ? this.waterLevel.value += 0.5 : this.waterLevel.value -= 0.5;
 
-        this.analysis.height = height;
+        return this;
+    }
+
+    // 正向 true 逆向 false
+    run(state: boolean) {
+        this.requestAnimationId = requestAnimationFrame(state
+            ? this.setupForward
+            : this.setupReverse
+        );
+    }
+
+    stop(): void {
+        if (this.requestAnimationId) {
+            cancelAnimationFrame(this.requestAnimationId);
+            this.requestAnimationId = undefined;
+        }
     }
 
     reset() {
+        this.stop();
         this.setupMinOrMaxHeight();
         this.setupWaterLevel();
         this.analysis.setOptions({
