@@ -1,0 +1,19 @@
+.cesium-vessel{
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 101;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    &-control{
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 102;
+        padding: 10px;
+        background-color: #fff;
+        box-sizing: border-box;
+    }
+}
